@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const questions = [
+const question = [
   {
     id: 1,
     question: "Which planet is the largest in our solar system?",
@@ -65,9 +65,20 @@ const questions = [
   }
 ];
 
-let answers = [];
+let answers = []
 
 function Quiz() {
+    const [questions, setQuestions] = useState([]);
+    const getnumber = async() => {
+        const resp = await axios.get('http://localhost:3000/quiz').then((res) => {
+          return(res);
+        });
+        setQuestions(resp.data);
+   }
+    useEffect(() =>{
+        getnumber();
+    });
+
     let [currentQ, setCurrentQ] = useState(1);
     const navigate = useNavigate();
 
@@ -113,8 +124,13 @@ function Quiz() {
         }
     }
 
-    return(
-        <div>
+    if(questions.length === 0){
+        return(
+            <p>Loading...</p>
+        )
+    } else {
+        return(
+             <div>
             <div>
                 <div>
                     <h1>Quiz of Solar System</h1>
@@ -136,7 +152,8 @@ function Quiz() {
                 <button onClick={() => {currentQ === questions.length?submitExam():handleNext()}}>{currentQ === questions.length?'Submit Exam':'Next Question'}</button>
             </div>
         </div>
-    )
+        )
+    }
 }
 
 export default Quiz;
