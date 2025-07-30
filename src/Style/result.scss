@@ -1,0 +1,33 @@
+.result{
+    background-color: #0b0c2a;
+    position: fixed;
+    inset: 0;
+    color: #f1f1f1;
+    align-content: center;
+    justify-items: center;
+    font-size: 1.5rem;
+    display: grid;
+}
+
+.heading{
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.P{
+    font-size: 56px;
+    font-weight: bolder;
+    color: rgb(12, 198, 12);
+}
+
+.F{
+    font-size: 56px;
+    font-weight: bolder;
+    color: rgb(198, 12, 12);
+}
+
+.score{
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+}

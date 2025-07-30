@@ -1,0 +1,42 @@
+.home{
+    background-color: #0b0c2a;
+    position: fixed;
+    inset: 0;
+    color: #f1f1f1;
+    align-content: center;
+    justify-items: center;
+    font-size: 1.5rem;
+}
+
+.content{
+    display: grid;
+    justify-items: center;
+}
+
+.startButton{
+    background-color: #ffcc00;
+    color: #0b0c2a;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+.startButton:hover{
+    background-color: #e6b800;
+    box-shadow: 0 4px 6px rgb(240, 252, 0);
+    animation: pulse-shadows 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse-shadows{
+    0%{
+        box-shadow: 0 4px 6px rgb(240, 252, 0);
+    }
+    50%{
+        box-shadow: 0 8px 12px rgb(240, 252, 0), 0 12px 18px rgb(240, 252, 0);
+    }
+    100%{
+        box-shadow: 0 4px 6px rgb(240, 252, 0);
+    }
+}
+

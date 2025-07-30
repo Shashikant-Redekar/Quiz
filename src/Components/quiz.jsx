@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../Style/quiz.scss';
 
 let answers = []
 
@@ -68,25 +69,29 @@ function Quiz() {
     } else {
         return(
              <div>
-            <div>
+            <div className="header">
                 <div>
-                    <h1>Quiz of Solar System</h1>
-                    <p>Total number of questions: {questions.length}</p>
+                    <h1 className="heading">Quiz of Solar System</h1>
+                    <p className="totalQ">Total number of questions: {questions.length}</p>
                 </div>
-                <button onClick={() => submitExam()}>End Quiz</button>
+                <button onClick={() => submitExam()} className="Hbutton">End Quiz</button>
             </div>
-            <div>
-                <h2>Question:{currentQ}</h2>
-                <h3>{questions[currentQ - 1].question}</h3>
-                <ul>
-                    {questions[currentQ - 1].options.map((opt,index) => (
-                        <li key={index}><button onClick={() => handleAnswer(opt)}>{opt}</button></li>
-                    ))}
-                </ul>
+            <div className="middle">
+                <div className="questionBox">
+                    <h2 className="quesN">Question:{currentQ}</h2>
+                    <h3 className="question">{questions[currentQ - 1].question}</h3>
+                </div>
+                <div className="options">
+                    <ul>
+                        {questions[currentQ - 1].options.map((opt,index) => (
+                            <p key={index}><button onClick={() => handleAnswer(opt)} className={answers[currentQ - 1] === opt?"soption":"option"}>{opt}</button></p>
+                        ))}
+                    </ul>
+                </div>
             </div>
-            <div>
-                <button onClick={() => handlePrev()}>Previous Question</button>
-                <button onClick={() => {currentQ === questions.length?submitExam():handleNext()}}>{currentQ === questions.length?'Submit Exam':'Next Question'}</button>
+            <div className="footer">
+                <button onClick={() => handlePrev()} className="fButton">Previous Question</button>
+                <button onClick={() => {currentQ === questions.length?submitExam():handleNext()}} className={currentQ === questions.length?"sButton":"fButton"}>{currentQ === questions.length?'Submit Exam':'Next Question'}</button>
             </div>
         </div>
         )
