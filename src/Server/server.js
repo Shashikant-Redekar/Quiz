@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3000;
+const port = process.env.PORT || 3000;
 
 const questions = [
   {
@@ -76,5 +76,5 @@ app.get('/quiz',(req,res) => {
 })
 
 app.listen(PORT,() => {
-    console.log(`Server running at http://localhost:${PORT}`)
+    console.log(`Server running at http://localhost:${port}`)
 });
