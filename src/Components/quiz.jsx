@@ -8,7 +8,7 @@ let answers = []
 function Quiz() {
     const [questions, setQuestions] = useState([]);
     const getnumber = async() => {
-        const resp = await axios.get('http://localhost:3000/quiz').then((res) => {
+        const resp = await axios.get('https://quiz-1-idks.onrender.com/quiz').then((res) => {
           return(res);
         });
         setQuestions(resp.data);
